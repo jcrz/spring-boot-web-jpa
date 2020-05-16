@@ -29,7 +29,25 @@ public class ClienteDaoImpl implements IClienteDao{
 	@Transactional
 	public void save(Cliente cliente) {
 		// TODO Auto-generated method stub
-		em.persist(cliente);
+		if(cliente.getId() != null && cliente.getId() > 0) {
+			em.merge(cliente);
+		} else {
+			em.persist(cliente);
+		}
+	}
+	
+	@Transactional(readOnly=true)
+	@Override
+	public Cliente findOne(Long id) {
+		// TODO Auto-generated method stub
+		return em.find(Cliente.class, id);
+	}
+
+	@Transactional
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		em.remove(findOne(id));
 	}
 
 } 
