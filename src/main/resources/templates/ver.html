@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}">Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand border border-light px-2" href="#">Gestion<span class="text-success">App</span></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/listar}">Registros</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/form}">Crear Nuevo</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	
+	<div class="container mt-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				
+				<img th:if="${#strings.length(cliente.foto) > 0}" class="img-thumbnail rounded float-left" style="max-width: 25%;" th:src="@{'/uploads/' + ${cliente.foto}}" th:alt="${cliente.foto}" />
+				
+				<ul class="list-group">
+					<li class="list-group-item" th:text="${cliente.nombre}"></li>
+					<li class="list-group-item" th:text="${cliente.apellido}"></li>
+					<li class="list-group-item" th:text="${cliente.email}"></li>
+					<li class="list-group-item" th:text="${cliente.createAt}"></li>
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
